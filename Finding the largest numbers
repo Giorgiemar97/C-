@@ -1,0 +1,51 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int findMaxValue(int numbers[], int arraySize);
+int findMaxValue(vector<int> numbers);
+
+int main()
+{
+    int a = 4, b = 2, c = 50;
+    vector<int> tmpVector = {a, b, 41241, c};
+
+    const int ARRAY_SIZE = 4;
+    int sample[ARRAY_SIZE] = {2, -4, 150, 40};
+
+    cout << "Max value of set: " << findMaxValue(sample, ARRAY_SIZE) << endl;
+    cout << "Max value of set: " << findMaxValue({a, b, 41241, c}) << endl;
+
+    //
+
+    cout << "Max value of set: " << *max_element(sample, sample + ARRAY_SIZE) << endl;
+    cout << "Max value of set: " << *max_element(tmpVector.begin(), tmpVector.end()) << endl;
+
+	return 0;
+}
+int findMaxValue(vector<int> numbers)
+{
+    int max = numbers[0]; //150
+
+    for (auto number: numbers)
+        if (number > max)
+            max = number;
+
+    return max;
+}
+int findMaxValue(int numbers[], int arraySize)
+{
+    int max = numbers[0]; //150
+
+    for (int i = 1; i < arraySize; i++)
+    {
+        if (max < numbers[i])
+            max = numbers[i];
+
+    }
+
+    return max;
+
+}
